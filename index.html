@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#eef1e8" />
+  <meta name="description" content="GreenThumb — identify plants, check zone fit, and care for what you grow." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/greenthumb-logo.jpeg" />
+  <link rel="apple-touch-icon" href="assets/greenthumb-logo.jpeg" />
+  <title>GreenThumb</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="paper-noise" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-go="home" aria-label="Go to GreenThumb home">
+        <span class="brand-logo-wrap"><img src="assets/greenthumb-logo.jpeg" alt="GreenThumb logo" class="brand-logo" /></span>
+        <span>
+          <span class="brand-wordmark">GreenThumb</span>
+          <span class="brand-subtitle">garden companion</span>
+        </span>
+      </button>
+      <button class="icon-btn" data-go="settings" aria-label="Open settings">⋯</button>
+    </header>
+
+    <main id="app" tabindex="-1">
+      <section class="screen active" data-screen="home">
+        <section class="hero-card journal-card">
+          <div class="hero-copy">
+            <span class="eyebrow">YOUR GARDEN COMPANION</span>
+            <h1>Know what it is.<br><em>Know if it’ll grow.</em></h1>
+            <p>Plant answers made simple for your home, your climate, and your garden.</p>
+            <button class="hero-cta" data-go="identify">Identify a plant <span>→</span></button>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="botanical-ring"></div>
+            <img src="assets/greenthumb-logo.jpeg" alt="" class="hero-logo" />
+            <span class="specimen-note">FIELD NOTE<br><b>01</b></span>
+          </div>
+        </section>
+
+        <section class="today-card journal-card">
+          <div>
+            <span class="eyebrow">TODAY</span>
+            <h2>Your garden is happy.</h2>
+            <p>Nothing needs your attention yet.</p>
+          </div>
+          <div class="status-seal">✓</div>
+        </section>
+
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="eyebrow">START HERE</span>
+            <h2>What would you like to do?</h2>
+          </div>
+        </div>
+
+        <div class="action-grid">
+          <button class="action-card feature" data-go="identify">
+            <span class="action-icon camera-icon">◉</span>
+            <span class="action-copy"><strong>Identify a plant</strong><small>Take a photo, upload one, or describe it.</small></span>
+            <span class="chev">↗</span>
+          </button>
+          <button class="action-card" data-go="garden">
+            <span class="action-icon">✿</span>
+            <span class="action-copy"><strong>My Garden</strong><small>Your plants, care tasks, and notes.</small></span>
+            <span class="chev">→</span>
+          </button>
+          <button class="action-card" data-go="discover">
+            <span class="action-icon">⌁</span>
+            <span class="action-copy"><strong>What should I grow?</strong><small>Find plants that fit your space.</small></span>
+            <span class="chev">→</span>
+          </button>
+        </div>
+
+        <section class="zone-card journal-card">
+          <div class="zone-illustration" aria-hidden="true">❧</div>
+          <div class="zone-copy">
+            <span class="eyebrow">YOUR GROWING CONDITIONS</span>
+            <h3>Set your location once.</h3>
+            <p>GreenThumb will use it to put zone compatibility, season, and climate before everything else.</p>
+            <button class="text-btn" data-go="settings">Set location <span>→</span></button>
+          </div>
+        </section>
+      </section>
+
+      <section class="screen" data-screen="identify">
+        <div class="page-title">
+          <button class="back-link" data-go="home">← Home</button>
+          <span class="eyebrow">PLANT IDENTIFICATION</span>
+          <h1>What are we looking at?</h1>
+          <p>For the best result, photograph the whole plant and one close-up of a leaf, flower, bark, or fruit.</p>
+        </div>
+
+        <div class="identify-options">
+          <label class="capture-card primary-capture">
+            <input id="cameraInput" type="file" accept="image/*" capture="environment" hidden />
+            <span class="capture-icon">◎</span>
+            <span><strong>Take a photo</strong><small>Open your camera</small></span>
+            <span class="capture-arrow">→</span>
+          </label>
+          <label class="capture-card">
+            <input id="uploadInput" type="file" accept="image/*" hidden />
+            <span class="capture-icon">▧</span>
+            <span><strong>Upload a photo</strong><small>Choose from your library</small></span>
+            <span class="capture-arrow">→</span>
+          </label>
+        </div>
+
+        <div id="photoPreview" class="photo-preview hidden" aria-live="polite"></div>
+
+        <div class="field-note-tip">
+          <span class="tip-mark">✦</span>
+          <p><strong>Best results:</strong> use natural light, keep the plant in focus, and include distinctive leaves, flowers, bark, or fruit.</p>
+        </div>
+
+        <div class="or-divider"><span>or describe it</span></div>
+
+        <div class="describe-card journal-card">
+          <label for="plantDescription">Describe what you see</label>
+          <textarea id="plantDescription" rows="5" placeholder="Small tree with glossy dark green leaves, white fragrant flowers, and round orange fruit…"></textarea>
+          <button class="solid-btn" id="describeButton">Continue with description</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="garden">
+        <div class="page-title">
+          <span class="eyebrow">MY GARDEN</span>
+          <h1>Your living field journal</h1>
+          <p>Care plans, check-ins, and seasonal guidance for the plants you own.</p>
+        </div>
+
+        <div class="garden-summary journal-card">
+          <div class="summary-number">0</div>
+          <div><strong>plants in your garden</strong><span>Nothing needs your attention today.</span></div>
+          <div class="status-seal small">✓</div>
+        </div>
+
+        <div class="empty-state journal-card">
+          <div class="empty-botanical">❀</div>
+          <span class="eyebrow">YOUR FIRST SPECIMEN</span>
+          <h3>Your garden is waiting.</h3>
+          <p>Identify a plant you already own, then add it here for personalized care.</p>
+          <button class="solid-btn" data-go="identify">Identify your first plant</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="discover">
+        <div class="page-title">
+          <span class="eyebrow">DISCOVER</span>
+          <h1>Find something that fits your life</h1>
+          <p>GreenThumb will eventually combine light, space, zone, allergies, pets, and your experience level.</p>
+        </div>
+        <div class="coming-card journal-card">
+          <div class="coming-badge">NEXT</div>
+          <span class="field-label">GARDEN MATCH</span>
+          <h3>“What should I grow?”</h3>
+          <p>We’ll unlock this after identification is stable so the app stays reliable as it grows.</p>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="settings">
+        <div class="page-title">
+          <span class="eyebrow">GREEN THUMB PROFILE</span>
+          <h1>Personalize your garden</h1>
+          <p>These settings stay on this device for now.</p>
+        </div>
+
+        <form id="settingsForm" class="settings-stack">
+          <div class="form-card journal-card">
+            <label for="zipCode">ZIP code</label>
+            <input id="zipCode" inputmode="numeric" autocomplete="postal-code" placeholder="e.g. 10301" maxlength="10" />
+            <small>Used later for growing zone, season, frost, and weather-aware care.</small>
+          </div>
+
+          <div class="form-card journal-card">
+            <label for="experience">Gardening experience</label>
+            <select id="experience">
+              <option value="beginner">I have no idea what I’m doing</option>
+              <option value="some">I know the basics</option>
+              <option value="experienced">I’m experienced</option>
+            </select>
+          </div>
+
+          <div class="form-card journal-card">
+            <label for="allergies">Known allergies or sensitivities</label>
+            <textarea id="allergies" rows="3" placeholder="Example: ragweed, latex, walnuts, strong fragrance…"></textarea>
+            <small>Used as a safety screen, not a medical diagnosis.</small>
+          </div>
+
+          <div class="form-card journal-card">
+            <label>Household safety</label>
+            <div class="check-row"><input type="checkbox" id="hasDogs" /><label for="hasDogs">Dogs</label></div>
+            <div class="check-row"><input type="checkbox" id="hasCats" /><label for="hasCats">Cats</label></div>
+            <div class="check-row"><input type="checkbox" id="hasKids" /><label for="hasKids">Young children</label></div>
+          </div>
+
+          <button class="solid-btn" type="submit">Save profile</button>
+          <div id="saveStatus" class="save-status" role="status"></div>
+        </form>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary navigation">
+      <button class="nav-item active" data-go="home"><span>⌂</span><small>Home</small></button>
+      <button class="nav-item" data-go="identify"><span>◎</span><small>Identify</small></button>
+      <button class="nav-item" data-go="garden"><span>✿</span><small>Garden</small></button>
+      <button class="nav-item" data-go="settings"><span>⚙</span><small>Profile</small></button>
+    </nav>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

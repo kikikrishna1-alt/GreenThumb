@@ -1,0 +1,13 @@
+{
+  "name": "GreenThumb",
+  "short_name": "GreenThumb",
+  "description": "Your garden companion",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f0e6",
+  "theme_color": "#eef1e8",
+  "icons": [
+    {"src":"assets/greenthumb-logo.jpeg","sizes":"any","type":"image/jpeg","purpose":"any maskable"}
+  ]
+}
